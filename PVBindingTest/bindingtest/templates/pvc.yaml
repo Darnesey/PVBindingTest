@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume1
+  labels:
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume1
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  selector:
+    matchLabels:
+      volumeName: {{ include "bindingtest.fullname" . }}-volume1
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.storage.volumeCapacity }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume2
+  labels:
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume2
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  selector:
+    matchLabels:
+      volumeName: {{ include "bindingtest.fullname" . }}-volume2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.storage.volumeCapacity }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume3
+  labels:
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume3
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  selector:
+    matchLabels:
+      volumeName: {{ include "bindingtest.fullname" . }}-volume3
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.storage.volumeCapacity }}

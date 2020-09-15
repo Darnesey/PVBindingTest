@@ -1,0 +1,22 @@
+# Default values for bindingtest.
+storage:
+  storageClassName: hostpath
+  volumeCapacity: 500Mi
+  volume1:
+    hostPath: /c/someFolderA/
+    mountPath: /app/folderA
+  volume2:
+    hostPath: /c/someFolderB/
+    mountPath: /app/folderB
+  volume3:
+    hostPath: /c/someFolderC/
+    mountPath: /app/folderC
+  volume4:
+    hostPath: /c/someFolderD/
+    mountPath: /app/folderD
+  volume5:
+    hostPath: /c/someFolderE/
+    mountPath: /app/folderE
+  volume6:
+    hostPath: /c/someFolderF/
+    mountPath: /app/folderF

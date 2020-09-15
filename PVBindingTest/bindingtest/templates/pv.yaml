@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume1
+  labels:
+    type: local
+    volumeGroup: testbind
+    volumeName: {{ include "bindingtest.fullname" . }}-volume1
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume1
+  annotations:
+    "helm.sh/hook": pre-install
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  capacity:
+    storage: {{ .Values.storage.volumeCapacity }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.storage.volume1.hostPath }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume2
+  labels:
+    type: local
+    volumeGroup: testbind
+    volumeName: {{ include "bindingtest.fullname" . }}-volume2
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume2
+  annotations:
+    "helm.sh/hook": pre-install
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  capacity:
+    storage: {{ .Values.storage.volumeCapacity }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.storage.volume2.hostPath }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "bindingtest.fullname" . }}-volume3
+  labels:
+    type: local
+    volumeGroup: testbind
+    volumeName: {{ include "bindingtest.fullname" . }}-volume3
+    {{- include "bindingtest.labels" . | nindent 4 }}-volume3
+  annotations:
+    "helm.sh/hook": pre-install
+spec:
+  storageClassName: {{ .Values.storage.storageClassName }}
+  capacity:
+    storage: {{ .Values.storage.volumeCapacity }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.storage.volume3.hostPath }}
