@@ -11,15 +11,18 @@ helm install bind3 bindingtest
 helm install bind4 bindingtest
 helm install bind5 bindingtest
 
+Write-Host "Waiting a few seconds for PVs to bind"
+Start-Sleep -Seconds 3
+
 # check the PV states
 Write-Host "Running 'kubectl get pv' to print off list of persistent volumes"
-$output = kubectl get pv -l volumeGroup=testbind
+$output = kubectl get pv
 
-if (Select-String -InputObject $output -pattern 'Available') {
-    Write-Host "A PV was not bounded properly"
+if (Select-String -InputObject $output -pattern 'Available.*pvc') {
+    Write-Host "A PV may not have been bounded properly"
 }
 else {
     Write-Host "All PVs bounded successfully"
 }
 
-kubectl get pv -l volumeGroup=testbind
+kubectl get pv
