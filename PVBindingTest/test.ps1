@@ -1,7 +1,7 @@
 # Simple startup to run multiple installs
 
 Write-Host "Deleting stale PVs"
-kc delete pv -l volumeGroup=testbind
+kubectl delete pv -l volumeGroup=testbind
 
 Write-Host "Installing PVs"
 helm install bind bindingtest
